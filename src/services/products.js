@@ -1,7 +1,7 @@
 const products = [
-  { id: "1", name: "Perfume A", category: "perfumes", description: "Fragancia floral elegante" },
-  { id: "2", name: "Vela B", category: "velas", description: "Aroma relajante de lavanda" },
-  { id: "3", name: "Accesorio C", category: "accesorios", description: "Estuche de lujo para perfumes" },
+  { id: "1", name: "Davidoff Coll Water 200ml", category: "perfumes", description: "Fresco veraniego elegante" },
+  { id: "2", name: "Dior Sauvage 100ml", category: "perfumes", description: "Aroma intenso elegante y varonil" },
+  { id: "3", name: "Cuba Winner 100ml", category: "Perfumes", description: "Fresco de uso diario" },
 ];
 
 export const getProducts = () => {

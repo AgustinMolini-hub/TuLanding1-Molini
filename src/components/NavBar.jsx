@@ -1,25 +1,56 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import CartWidget from "./CartWidget";
+import { getProducts } from "../services/products";
 
 const NavBar = () => {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    getProducts().then((products) => {
+      // Extrae categorías únicas
+      const uniqueCategories = [...new Set(products.map((p) => p.category))];
+      setCategories(uniqueCategories);
+    });
+  }, []);
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-4">
-      <Link className="navbar-brand" to="/">Nouveau Parfum</Link>
-      <div className="collapse navbar-collapse">
-        <ul className="navbar-nav me-auto">
-          <li className="nav-item">
-            <Link className="nav-link" to="/">Inicio</Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/category/perfumes">Perfumes</Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/category/accesorios">Accesorios</Link>
-          </li>
-        </ul>
+      <div className="container-fluid">
+        {/* Logo */}
+        <Link className="navbar-brand" to="/">Nouveau Parfum</Link>
+
+        {/* Botón responsive */}
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
+        {/* Links dinámicos */}
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav me-auto">
+            <li className="nav-item">
+              <Link className="nav-link" to="/">Inicio</Link>
+            </li>
+            {categories.map((cat) => (
+              <li key={cat} className="nav-item">
+                <Link className="nav-link" to={`/category/${cat}`}>
+                  {cat.charAt(0).toUpperCase() + cat.slice(1)}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          {/* Carrito */}
+          <CartWidget />
+        </div>
       </div>
-      <CartWidget />
     </nav>
   );
 };

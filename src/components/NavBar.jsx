@@ -15,10 +15,12 @@ const NavBar = () => {
   }, []);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-4">
+    <nav className="navbar navbar-expand-lg custom-navbar px-4">
       <div className="container-fluid">
         {/* Logo */}
-        <Link className="navbar-brand" to="/">Nouveau Parfum</Link>
+        <Link className="navbar-brand text-white fw-bold" to="/">
+          Nouveau Parfum
+        </Link>
 
         {/* Botón responsive */}
         <button
@@ -37,11 +39,16 @@ const NavBar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav me-auto">
             <li className="nav-item">
-              <Link className="nav-link" to="/">Inicio</Link>
+              <Link className="nav-link nav-link-custom text-white" to="/">
+                Inicio
+              </Link>
             </li>
             {categories.map((cat) => (
               <li key={cat} className="nav-item">
-                <Link className="nav-link" to={`/category/${cat}`}>
+                <Link
+                  className="nav-link nav-link-custom text-white"
+                  to={`/category/${cat}`}
+                >
                   {cat.charAt(0).toUpperCase() + cat.slice(1)}
                 </Link>
               </li>

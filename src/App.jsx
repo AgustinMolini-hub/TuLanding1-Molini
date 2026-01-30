@@ -22,6 +22,10 @@ import Cart from "./components/cart/Cart";
 // Checkout
 import Checkout from "./components/checkout/Checkout";
 
+// 🎨 Importa primero las variables y luego los estilos globales
+import "./variables.css";
+import "./App.css";
+
 function App() {
   return (
     <CartProvider>

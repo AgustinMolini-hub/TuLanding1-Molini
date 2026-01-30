@@ -1,0 +1,12 @@
+:root {
+  /* Colores principales */
+  --color-bg: #000000;          /* negro */
+  --color-primary: #6a0dad;     /* morado base */
+  --color-primary-light: #8a2be2; /* morado más claro para hover */
+  --color-text: #ffffff;        /* texto principal en blanco */
+  --color-muted: #444444;       /* gris oscuro para texto secundario */
+
+  /* Extras opcionales */
+  --color-border: var(--color-primary);
+  --color-card-bg: var(--color-bg);
+}

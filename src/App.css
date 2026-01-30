@@ -1,10 +1,53 @@
+/* Layout general: ocupar toda la pantalla */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* Root container */
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
   text-align: center;
 }
 
+/* Main ocupa el espacio entre navbar y footer */
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;   /* centra horizontalmente */
+  align-items: flex-start;   /* contenido empieza arriba */
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  padding: 2rem;
+}
+
+/* Navbar arriba, ancho completo */
+.navbar {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--color-bg);
+  border-bottom: 2px solid var(--color-primary);
+}
+
+/* Footer abajo, ancho completo */
+footer {
+  width: 100%;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  border-top: 2px solid var(--color-primary);
+  text-align: center;
+  padding: 1rem;
+}
+
+/* Logo */
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -12,19 +55,16 @@
   transition: filter 300ms;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em var(--color-primary));
 }
 .logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  filter: drop-shadow(0 0 2em var(--color-primary-light));
 }
 
+/* Animación logo */
 @keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -33,49 +73,63 @@
   }
 }
 
-/* Cards uniformes y más compactas */
-.card {
-  width: 180px;              /* 👈 más angostas */
-  height: 280px;             /* 👈 más bajas */
-  padding: 0.75rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 auto;
-  box-sizing: border-box;
-}
-
-/* Texto de documentación */
-.read-the-docs {
-  color: #888;
-}
-/* Grid de productos: 2 filas de 3 */
+/* Contenedor de productos con Flexbox */
 .products-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 👈 3 columnas */
-  gap: 1rem;                             /* espacio entre tarjetas */
-  justify-items: center;                 /* centra cada tarjeta */
-  margin: 2rem auto;
-  max-width: 900px;                      /* ancho máximo para centrar */
+  display: flex;
+  flex-wrap: wrap;              /* 👈 permite que las cards bajen a la siguiente fila */
+  justify-content: center;      /* 👈 centra las cards horizontalmente */
+  gap: 1.5rem;                  /* 👈 espacio uniforme entre cards */
+  max-width: 1200px;            /* ancho máximo del bloque */
+  margin: 0 auto;               /* centra el bloque */
+  padding: 2rem 0;
 }
 
+/* Cards uniformes */
 .card {
-  width: 180px;
-  height: 280px;
-  padding: 0.75rem;
+  flex: 0 1 220px;              /* 👈 ancho fijo de ~220px */
+  height: 320px;                /* 👈 alto fijo */
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  transition: border-color 0.3s ease;
+  overflow: hidden;
 }
 
+.card:hover {
+  border-color: var(--color-primary-light);
+}
+
+/* Descripción con límite de líneas */
+.card-description {
+  flex: 1;
+  font-size: 0.9rem;
+  color: var(--color-text);
+  text-align: center;
+  margin: 0.5rem 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;   /* máximo 3 líneas */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Texto secundario */
+.read-the-docs {
+  color: var(--color-muted);
+}
+
+/* Imagen de producto */
 .product-thumb {
   width: 100%;
-  height: 150px;
+  height: 160px;
   object-fit: contain;
-  background-color: #f8f8f8;
-  margin-bottom: 0.5rem;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-primary);
+  margin-bottom: 0.75rem;
   display: block;
 }

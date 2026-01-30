@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import CartWidget from "./CartWidget";
-import { getProducts } from "../services/products";
+import { getProducts } from "../../services/products";
 
 const NavBar = () => {
   const [categories, setCategories] = useState([]);

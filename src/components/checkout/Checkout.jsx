@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
-import { CartContext } from "../context/CartContext";
+import { CartContext } from "../../context/CartContext";
 import CheckoutForm from "./CheckoutForm";
 import { collection, addDoc } from "firebase/firestore";
-import { db } from "../firebase/firebaseConfig";
+import { db } from "../../firebase/firebaseConfig";
 import { Link } from "react-router-dom";
-import { formatPrice } from "../utils/formatPrice"; //  importamos el helper
+import { formatPrice } from "../../utils/formatPrice"; //  importamos el helper
 
 const Checkout = () => {
   const { cart, totalPrice, clearCart } = useContext(CartContext);

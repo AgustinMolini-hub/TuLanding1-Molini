@@ -10,14 +10,10 @@ function ItemList({ products }) {
   }
 
   return (
-    <div className="container my-5 d-flex justify-content-center">
-      <div className="d-flex justify-content-center align-items-start gap-4" role="list">
-        {products.map((prod) => (
-          <div key={prod.id} role="listitem">
-            <ProductCard product={prod} />
-          </div>
-        ))}
-      </div>
+    <div className="products-grid">
+      {products.map((prod) => (
+        <ProductCard key={prod.id} product={prod} />
+      ))}
     </div>
   );
 }

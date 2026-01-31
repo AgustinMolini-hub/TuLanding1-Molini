@@ -1,6 +1,6 @@
 // src/components/home/HomeIntro.jsx
 import { Link } from "react-router-dom";
-import "./HomeIntro.css"; // Importamos los estilos del hero
+import "./Homeintro.css"; // Importamos los estilos del hero
 
 const HomeIntro = () => {
   return (
